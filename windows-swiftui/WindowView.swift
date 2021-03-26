@@ -16,19 +16,26 @@ struct WindowView<Content: View>: View {
     let windowContents: Content
     let height: CGFloat
     let width: CGFloat
+    let title: String
     
-    init(@ViewBuilder content: @escaping () -> Content, height: CGFloat = 250, width: CGFloat = 250) {
+    init(@ViewBuilder content: @escaping () -> Content, height: CGFloat = 250, width: CGFloat = 250, title: String = "") {
         self.windowContents = content()
         self.height = height
         self.width = width
+        self.title = title
     }
     
     var body: some View {
         VStack(spacing: 0){
-            Rectangle()
-                .fill(colorScheme == .dark ? Color(UIColor.systemGray6) : Color.white)
-                .frame(width: width, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                .gesture(simpleDrag.simultaneously(with: fingerDrag))
+            ZStack{
+                Rectangle()
+                    .fill(colorScheme == .dark ? Color(UIColor.systemGray6) : Color.white)
+                    .frame(width: width, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    .gesture(simpleDrag.simultaneously(with: fingerDrag))
+                Text(title)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color(UIColor.systemGray))
+            }
             Divider()
                 .frame(width: width)
             self.windowContents
@@ -68,6 +75,6 @@ struct WindowView<Content: View>: View {
 
 struct WindowView_Previews: PreviewProvider {
     static var previews: some View {
-        RandomView()
+        TextView()
     }
 }

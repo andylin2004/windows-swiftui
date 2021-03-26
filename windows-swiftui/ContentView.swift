@@ -13,8 +13,8 @@ struct ContentView: View {
     
     var body: some View{
         ZStack{
-            RandomView()
-            RandomView()
+            TextView()
+            ListView()
         }
     }
     
