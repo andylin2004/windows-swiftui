@@ -1,17 +1,24 @@
 //
 //  ContentView.swift
-//  Roblox Studio Mobile
+//  windows-swiftui
 //
 //  Created by Andy Lin on 3/25/21.
 //
 
 import SwiftUI
 
+public var minPos: Double = 1;
+
 struct ContentView: View {
-    var body: some View {
-        Text("Hello, world!")
-            .padding()
+    
+    var body: some View{
+        ZStack{
+            RandomView()
+            RandomView()
+        }
     }
+    
+    
 }
 
 struct ContentView_Previews: PreviewProvider {

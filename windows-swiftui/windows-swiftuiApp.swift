@@ -1,6 +1,6 @@
 //
-//  Roblox_Studio_MobileApp.swift
-//  Roblox Studio Mobile
+//  windows-swiftuiApp.swift
+//  windows-swiftui
 //
 //  Created by Andy Lin on 3/25/21.
 //
@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct Roblox_Studio_MobileApp: App {
+struct windowsswiftuiApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
