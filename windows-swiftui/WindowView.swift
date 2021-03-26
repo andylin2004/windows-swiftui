@@ -23,9 +23,11 @@ struct WindowView<Content: View>: View {
         VStack(spacing: 0){
             Rectangle()
                 .fill(colorScheme == .dark ? Color(UIColor.systemGray6) : Color.white)
-                .border(colorScheme == .dark ? Color.clear : Color.gray)
+//                .border(colorScheme == .dark ? Color.clear : Color.gray)
                 .frame(width: 250, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .gesture(simpleDrag.simultaneously(with: fingerDrag))
+            Divider()
+                .frame(width: 250)
             self.windowContents
                 .frame(width: 250, height: 250, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .background(colorScheme == .dark ? Color(UIColor.systemGray5) : Color.white)
