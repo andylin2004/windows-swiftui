@@ -12,7 +12,7 @@
 		42A4D031260D5E9A00506400 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42A4D030260D5E9A00506400 /* Assets.xcassets */; };
 		42A4D034260D5E9A00506400 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42A4D033260D5E9A00506400 /* Preview Assets.xcassets */; };
 		42A4D041260D88CC00506400 /* WindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A4D040260D88CC00506400 /* WindowView.swift */; };
-		42A4D044260D91C400506400 /* RandomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A4D043260D91C400506400 /* RandomView.swift */; };
+		42A4D044260D91C400506400 /* HelloView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A4D043260D91C400506400 /* HelloView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +23,7 @@
 		42A4D033260D5E9A00506400 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		42A4D035260D5E9A00506400 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42A4D040260D88CC00506400 /* WindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowView.swift; sourceTree = "<group>"; };
-		42A4D043260D91C400506400 /* RandomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomView.swift; sourceTree = "<group>"; };
+		42A4D043260D91C400506400 /* HelloView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +59,7 @@
 				42A4D02C260D5E9100506400 /* windows-swiftuiApp.swift */,
 				42A4D02E260D5E9100506400 /* ContentView.swift */,
 				42A4D040260D88CC00506400 /* WindowView.swift */,
-				42A4D043260D91C400506400 /* RandomView.swift */,
+				42A4D043260D91C400506400 /* HelloView.swift */,
 				42A4D030260D5E9A00506400 /* Assets.xcassets */,
 				42A4D035260D5E9A00506400 /* Info.plist */,
 				42A4D032260D5E9A00506400 /* Preview Content */,
@@ -147,7 +147,7 @@
 				42A4D041260D88CC00506400 /* WindowView.swift in Sources */,
 				42A4D02F260D5E9100506400 /* ContentView.swift in Sources */,
 				42A4D02D260D5E9100506400 /* windows-swiftuiApp.swift in Sources */,
-				42A4D044260D91C400506400 /* RandomView.swift in Sources */,
+				42A4D044260D91C400506400 /* HelloView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

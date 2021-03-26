@@ -8,28 +8,31 @@
 import SwiftUI
 
 struct WindowView<Content: View>: View {
-    @State private var location: CGPoint = CGPoint(x: 500, y: 500)
+    @State private var location: CGPoint = CGPoint(x: 200, y: 200)
     @GestureState private var fingerLocation: CGPoint? = nil
     @GestureState private var startLocation: CGPoint? = nil
     @State private var piority: Double = 1
     @Environment(\.colorScheme) var colorScheme
     let windowContents: Content
+    let height: CGFloat
+    let width: CGFloat
     
-    init(@ViewBuilder content: @escaping () -> Content) {
-            self.windowContents = content()
-        }
+    init(@ViewBuilder content: @escaping () -> Content, height: CGFloat = 250, width: CGFloat = 250) {
+        self.windowContents = content()
+        self.height = height
+        self.width = width
+    }
     
     var body: some View {
         VStack(spacing: 0){
             Rectangle()
                 .fill(colorScheme == .dark ? Color(UIColor.systemGray6) : Color.white)
-//                .border(colorScheme == .dark ? Color.clear : Color.gray)
-                .frame(width: 250, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                .frame(width: width, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .gesture(simpleDrag.simultaneously(with: fingerDrag))
             Divider()
-                .frame(width: 250)
+                .frame(width: width)
             self.windowContents
-                .frame(width: 250, height: 250, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                .frame(width: width, height: height, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .background(colorScheme == .dark ? Color(UIColor.systemGray5) : Color.white)
         }.clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
         .shadow(radius: 5)
