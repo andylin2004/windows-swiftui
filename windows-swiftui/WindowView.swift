@@ -48,7 +48,7 @@ struct WindowView<Content: View>: View {
                     newLocation.x += value.translation.width
                     newLocation.y += value.translation.height
                     self.location = newLocation
-                    piority += 1
+                    piority = minPos+1
                 }.updating($startLocation){
                     (value, startLocation, transaction) in
                     startLocation = startLocation ?? location
