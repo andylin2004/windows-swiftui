@@ -36,11 +36,16 @@ struct WindowView<Content: View>: View {
                     .fontWeight(.bold)
                     .foregroundColor(Color(UIColor.systemGray))
             }
-            Divider()
-                .frame(width: width)
-            self.windowContents
-                .frame(width: width, height: height, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                .background(colorScheme == .dark ? Color(UIColor.systemGray5) : Color.white)
+            Group{
+                Divider()
+                    .frame(width: width)
+                self.windowContents
+                    .frame(width: width, height: height, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    .background(colorScheme == .dark ? Color(UIColor.systemGray5) : Color.white)
+            }.onTapGesture(count: 1){
+                minPos += 1
+                piority = minPos
+            }
         }.clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
         .shadow(radius: 5)
         .position(location)
@@ -69,7 +74,7 @@ struct WindowView<Content: View>: View {
                     minPos += 1
                     piority = minPos
                 }
-        }
+    }
 }
 
 
