@@ -12,6 +12,7 @@ struct WindowView<Content: View>: View {
     @GestureState private var fingerLocation: CGPoint? = nil
     @GestureState private var startLocation: CGPoint? = nil
     @State private var piority: Double = 1
+    @State var remove = false
     @Environment(\.colorScheme) var colorScheme
     let windowContents: Content
     let height: CGFloat
@@ -31,11 +32,18 @@ struct WindowView<Content: View>: View {
                 Rectangle()
                     .fill(colorScheme == .dark ? Color(UIColor.systemGray6) : Color.white)
                     .frame(width: width, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                    .gesture(simpleDrag.simultaneously(with: fingerDrag))
-                Text(title)
-                    .fontWeight(.bold)
-                    .foregroundColor(Color(UIColor.systemGray))
-            }
+                HStack{
+                    Button("X"){
+                        remove = true
+                    }
+                    Spacer()
+                    Text(title)
+                        .fontWeight(.bold)
+                        .foregroundColor(Color(UIColor.systemGray))
+                    Spacer()
+                }
+                .frame(width: width-10)
+            }.gesture(simpleDrag.simultaneously(with: fingerDrag))
             Group{
                 Divider()
                     .frame(width: width)
@@ -50,6 +58,7 @@ struct WindowView<Content: View>: View {
         .shadow(radius: 5)
         .position(location)
         .zIndex(piority)
+        .isHidden(remove, remove: remove)
     }
     
     var fingerDrag: some Gesture{
@@ -59,24 +68,51 @@ struct WindowView<Content: View>: View {
     
     var simpleDrag: some Gesture {
         DragGesture(minimumDistance: 0, coordinateSpace: .global)
-                .onChanged {
-                    value in
-                    var newLocation = startLocation ?? location
-                    newLocation.x += value.translation.width
-                    newLocation.y += value.translation.height
-                    self.location = newLocation
-                    piority = minPos+1
-                }.updating($startLocation){
-                    (value, startLocation, transaction) in
-                    startLocation = startLocation ?? location
-                }
-                .onEnded{_ in
-                    minPos += 1
-                    piority = minPos
-                }
+            .onChanged {
+                value in
+                var newLocation = startLocation ?? location
+                newLocation.x += value.translation.width
+                newLocation.y += value.translation.height
+                self.location = newLocation
+                piority = minPos+1
+            }.updating($startLocation){
+                (value, startLocation, transaction) in
+                startLocation = startLocation ?? location
+            }
+            .onEnded{_ in
+                minPos += 1
+                piority = minPos
+            }
     }
 }
 
+extension View {
+    
+    /// Hide or show the view based on a boolean value.
+    ///
+    /// Example for visibility:
+    ///
+    ///     Text("Label")
+    ///         .isHidden(true)
+    ///
+    /// Example for complete removal:
+    ///
+    ///     Text("Label")
+    ///         .isHidden(true, remove: true)
+    ///
+    /// - Parameters:
+    ///   - hidden: Set to `false` to show the view. Set to `true` to hide the view.
+    ///   - remove: Boolean value indicating whether or not to remove the view.
+    @ViewBuilder func isHidden(_ hidden: Bool, remove: Bool = false) -> some View {
+        if hidden {
+            if !remove {
+                self.hidden()
+            }
+        } else {
+            self
+        }
+    }
+}
 
 struct WindowView_Previews: PreviewProvider {
     static var previews: some View {
