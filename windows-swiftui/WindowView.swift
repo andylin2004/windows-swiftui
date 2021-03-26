@@ -33,16 +33,18 @@ struct WindowView<Content: View>: View {
                     .fill(colorScheme == .dark ? Color(UIColor.systemGray6) : Color.white)
                     .frame(width: width, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 HStack{
-                    Button("X"){
-                        remove = true
-                    }
+                    Button(action: {remove = true}, label: {
+                        Circle()
+                            .foregroundColor(Color.red)
+                            .frame(width: 20, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    })
                     Spacer()
                     Text(title)
                         .fontWeight(.bold)
                         .foregroundColor(Color(UIColor.systemGray))
                     Spacer()
                 }
-                .frame(width: width-10)
+                .frame(width: width-20)
             }.gesture(simpleDrag.simultaneously(with: fingerDrag))
             Group{
                 Divider()
