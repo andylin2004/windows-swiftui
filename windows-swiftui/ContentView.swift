@@ -12,6 +12,7 @@ public var minPos: Double = 1;
 struct ContentView: View {
     @State private var textViews = 1
     @State private var listViews = 1
+    @State private var timeView = 0
     
     var body: some View{
         
@@ -22,6 +23,9 @@ struct ContentView: View {
             ForEach(0..<listViews, id: \.self){ _ in
                 ListView()
             }
+            ForEach(0..<timeView, id: \.self){ _ in
+                TimeView()
+            }
         }
         .toolbar{
             ToolbarItem(placement: .bottomBar) {
@@ -31,6 +35,9 @@ struct ContentView: View {
                     }
                     Button("List View"){
                         listViews += 1
+                    }
+                    Button("Time View"){
+                        timeView += 1
                     }
                 }
             }

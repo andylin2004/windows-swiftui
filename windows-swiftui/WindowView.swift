@@ -52,7 +52,8 @@ struct WindowView<Content: View>: View {
                 self.windowContents
                     .frame(width: width, height: height, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     .background(colorScheme == .dark ? Color(UIColor.systemGray5) : Color.white)
-            }.onTapGesture(count: 1){
+            }.gesture(dragDetect)
+            .onTapGesture(count: 1){
                 minPos += 1
                 piority = minPos
             }
@@ -84,6 +85,12 @@ struct WindowView<Content: View>: View {
             .onEnded{_ in
                 minPos += 1
                 piority = minPos
+            }
+    }
+    var dragDetect: some Gesture{
+        DragGesture()
+            .onChanged{_ in
+                piority = minPos + 1
             }
     }
 }
