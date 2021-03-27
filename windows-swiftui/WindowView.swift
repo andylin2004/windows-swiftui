@@ -39,7 +39,7 @@ struct WindowView<Content: View>: View {
                             .frame(width: 20, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     })
                     Spacer()
-                    Text(title)
+                    Text(title+String(piority))
                         .fontWeight(.bold)
                         .foregroundColor(Color(UIColor.systemGray))
                     Spacer()
@@ -54,7 +54,7 @@ struct WindowView<Content: View>: View {
                     .background(colorScheme == .dark ? Color(UIColor.systemGray5) : Color.white)
             }.gesture(dragDetect)
             .onTapGesture(count: 1){
-                minPos += 1
+                minPos += 2
                 piority = minPos
             }
         }.clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
@@ -77,13 +77,13 @@ struct WindowView<Content: View>: View {
                 newLocation.x += value.translation.width
                 newLocation.y += value.translation.height
                 self.location = newLocation
-                piority = minPos+1
+                piority = minPos+2
             }.updating($startLocation){
                 (value, startLocation, transaction) in
                 startLocation = startLocation ?? location
             }
             .onEnded{_ in
-                minPos += 1
+                minPos += 2
                 piority = minPos
             }
     }

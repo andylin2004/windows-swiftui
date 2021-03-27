@@ -15,16 +15,18 @@ struct ContentView: View {
     @State private var timeView = 0
     
     var body: some View{
-        
-        ZStack{
-            ForEach(0..<textViews, id: \.self){ _ in
-                TextView()
-            }
-            ForEach(0..<listViews, id: \.self){ _ in
-                ListView()
-            }
-            ForEach(0..<timeView, id: \.self){ _ in
-                TimeView()
+        VStack{
+            Text(minPos.description)
+            ZStack{
+                ForEach(0..<textViews, id: \.self){ _ in
+                    TextView()
+                }
+                ForEach(0..<listViews, id: \.self){ _ in
+                    ListView()
+                }
+                ForEach(0..<timeView, id: \.self){ _ in
+                    TimeView()
+                }
             }
         }
         .toolbar{
