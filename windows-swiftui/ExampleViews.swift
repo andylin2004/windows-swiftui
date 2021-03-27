@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Foundation
 
 struct TextView: View {
     var body: some View {
@@ -27,9 +28,18 @@ struct ListView: View{
     }
 }
 
+struct TimeView: View {
+    var body: some View{
+        WindowView(content: {
+            Text(Date(), style: .time)
+        }, title: "Time")
+    }
+}
+
 struct ExampleView_Previews: PreviewProvider {
     static var previews: some View {
         TextView()
         ListView()
+        TimeView()
     }
 }
